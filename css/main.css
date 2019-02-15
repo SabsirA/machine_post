@@ -33,7 +33,7 @@
 .cel.active{
   border: solid 2px red;
 }
-.cel.mark{
+.cel.mark:before{
   content: "V";
   text-align: center;
   font-size: 40px;
