@@ -1,18 +1,6 @@
 var lenta = [];
 var ukazka = 0;
 var timer;
-function execute(n) {
-    let command=$('.item:eq(${n})');
-    let make = command.find('select').val();
-    console.log(make);
-    switch (make) {
-        case '<': {ukazka--;
-            render_lenta(0, 19);};
-        case '>': {ukazka++;
-            render_lenta(0, 19);};
-    }
-  // timer=setTimeout(execute(command.find('.number_command').html()), 1000);
-}
 function render_lenta(a, b) {
     let html = ``;
     for (let i = a; i <= b; i++){
@@ -44,6 +32,26 @@ function add_command(){
     </div>`;
    $('.commands').append(html);
 }
+function execute(n) {
+    let command=$(`.item:eq(${n})`);
+    let make = command.find('select').val();
+    switch (make) {
+        case '<': {ukazka--;
+            render_lenta(0, 19);
+        break;};
+        case '>': {ukazka++;
+            render_lenta(0, 19);
+        break;};
+        case'!':return true;
+        case'V':lenta[ukazka].mark=true;
+        render_lenta(0,19);
+        break;
+    }
+    let num=command.find('.number_command').html();
+    console.log(num);
+    setTimeout(execute(num), 1000);
+}
+
 $(function () {
 
    init();
