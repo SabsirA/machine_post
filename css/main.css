@@ -39,3 +39,31 @@
   font-size: 40px;
   line-height: 40px;
 }
+.commands{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.commands .item{
+    display: flex;
+    height: 30px;
+    counter-reset: counter 0;
+    counter-increment: counter 2;
+    border: solid 1px #666666;
+}
+.commands .item div{
+    border: solid 1px #bbbbbb;
+    width: 13%;
+    text-align: center;
+    line-height: 30px;
+}
+.commands .item .comment{
+    width: 60%;
+}
+.commands .item .number{
+    list-style: decimal;
+}
+.commands .item .number:after{
+    content: counter(counter);
+
+}
