@@ -43,12 +43,13 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+  counter-reset: count -1;
 }
 .commands .item{
     display: flex;
     height: 30px;
-    counter-reset: counter 0;
-    counter-increment: counter 2;
+
+
     border: solid 1px #666666;
 }
 .commands .item div{
@@ -62,8 +63,14 @@
 }
 .commands .item .number{
     list-style: decimal;
+
 }
+
 .commands .item .number:after{
-    content: counter(counter);
+    content: counter(count);
+    counter-increment: count 1;
+}
+.commands .item:first-child .number:after{
+  content: '';
 
 }
