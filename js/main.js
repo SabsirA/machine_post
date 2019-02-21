@@ -15,6 +15,22 @@ function init() {
         )
     }
 }
+function add_command(){
+    let html = ``;
+    html +=`<div class="item">
+        <div class="number"></div>
+        <div class="command"><select>
+            <option value="<"><-</option>
+            <option value=">">-></option>
+            <option value="V">V</option>
+            <option value="?">?</option>
+            <option value="о">о</option>
+            <option value="!">!</option></select></div>
+        <div class="number_command" contenteditable="true"></div>
+        <div class="comment" contenteditable="true"></div>
+    </div>`;
+   $('.commands').append(html);
+}
 $(function () {
 
    init();
@@ -32,5 +48,6 @@ $(function () {
     $('.button.right').on('click', function (e) {
         ukazka++;
         render_lenta(0, 19);
-    })
+    });
+    $('.commands').on('click', '.item:last', function(e){add_command()});
 });
