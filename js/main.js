@@ -1,5 +1,18 @@
 var lenta = [];
 var ukazka = 0;
+var timer;
+function execute(n) {
+    let command=$('.item:eq(${n})');
+    let make = command.find('select').val();
+    console.log(make);
+    switch (make) {
+        case '<': {ukazka--;
+            render_lenta(0, 19);};
+        case '>': {ukazka++;
+            render_lenta(0, 19);};
+    }
+  // timer=setTimeout(execute(command.find('.number_command').html()), 1000);
+}
 function render_lenta(a, b) {
     let html = ``;
     for (let i = a; i <= b; i++){
@@ -50,4 +63,7 @@ $(function () {
         render_lenta(0, 19);
     });
     $('.commands').on('click', '.item:last', function(e){add_command()});
+    $('.button.start').on('click', function (e) {
+        execute(1);
+    })
 });
