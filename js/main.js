@@ -43,7 +43,14 @@ function execute(n) {
             render_lenta(0, 19);
         break;};
         case'!':return true;
-        case'V':lenta[ukazka].mark=true;
+        case'V':
+            if(lenta[ukazka].mark){
+                return {
+                    'status':false,
+                    'message':`Ошибка в строке ${n}`
+                }
+            }
+            lenta[ukazka].mark=true;
         render_lenta(0,19);
         break;
     }
