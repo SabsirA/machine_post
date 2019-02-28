@@ -25,7 +25,7 @@ function add_command(){
             <option value=">">-></option>
             <option value="V">V</option>
             <option value="?">?</option>
-            <option value="о">о</option>
+            <option value="X">X</option>
             <option value="!">!</option></select></div>
         <div class="number_command" contenteditable="true"></div>
         <div class="comment" contenteditable="true"></div>
@@ -34,7 +34,14 @@ function add_command(){
 }
 function execute(n) {
     let command=$(`.item:eq(${n})`);
+    if(!command){
+        return {
+            'status':false,
+            'message':`Ошибка. Команда ${n} не найдена`
+        }
+    }
     let make = command.find('select').val();
+    let num=command.find('.number_command').html();
     switch (make) {
         case '<': {ukazka--;
             render_lenta(0, 19);
@@ -47,16 +54,38 @@ function execute(n) {
             if(lenta[ukazka].mark){
                 return {
                     'status':false,
-                    'message':`Ошибка в строке ${n}`
+                    'message':`Ошибка в команде ${n}. Указатель уже стоит`
                 }
             }
             lenta[ukazka].mark=true;
         render_lenta(0,19);
         break;
+        case 'X':
+            if(!lenta[ukazka].mark){
+            return {
+                'status':false,
+                'message':`Ошибка в команде ${n}. Указателя нет`
+            }
+        }
+            lenta[ukazka].mark=false;
+            render_lenta(0,19);
+            break;
+        case '?':
+            let  wars=command.find('.number_command').html().split(',');
+            if (lenta[ukazka].mark){
+                num=wars[0];
+            }else {
+                num=wars[1];
+            }
     }
-    let num=command.find('.number_command').html();
     console.log(num);
-    setTimeout(execute(num), 1000);
+    if(num===''){
+        return {
+            'status':false,
+            'message':`Ошибка в команде ${n}. Отсутствует ссылка на следущую команду`
+        }
+    }
+    setTimeout(console.log(execute(num)), 1000);
 }
 
 $(function () {
@@ -79,6 +108,6 @@ $(function () {
     });
     $('.commands').on('click', '.item:last', function(e){add_command()});
     $('.button.start').on('click', function (e) {
-        execute(1);
+        (execute(1));
     })
 });
