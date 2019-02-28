@@ -40,6 +40,8 @@ function execute(n) {
             'message':`Ошибка. Команда ${n} не найдена`
         }
     }
+    $('.run').removeClass ('run');
+    command.addClass('run');
     let make = command.find('select').val();
     let num=command.find('.number_command').html();
     switch (make) {
@@ -78,14 +80,13 @@ function execute(n) {
                 num=wars[1];
             }
     }
-    console.log(num);
     if(num===''){
         return {
             'status':false,
             'message':`Ошибка в команде ${n}. Отсутствует ссылка на следущую команду`
         }
     }
-    setTimeout(console.log(execute(num)), 1000);
+    setTimeout(execute, 500,num);
 }
 
 $(function () {

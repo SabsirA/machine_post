@@ -52,6 +52,9 @@
 
     border: solid 1px #666666;
 }
+.commands .item.run{
+    background-color: greenyellow;
+}
 .commands .item div{
     border: solid 1px #bbbbbb;
     width: 13%;
