@@ -75,9 +75,9 @@ function execute(n) {
         case '?':
             let  wars=command.find('.number_command').html().split(',');
             if (lenta[ukazka].mark){
-                num=wars[0];
-            }else {
                 num=wars[1];
+            }else {
+                num=wars[0];
             }
     }
     if(num===''){
@@ -112,6 +112,9 @@ $(function () {
         (execute(1));
     });
     $('.button.save').on('click', function (e) {
-        saveAs( $('.command').html(),'save.txt')
+       $.cookie('save',$('.command').html());
+    });
+    $('.button.load').on('click', function (e) {
+        $('.command').html(  $.cookie('save'));
     })
 });
