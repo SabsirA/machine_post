@@ -110,5 +110,9 @@ $(function () {
     $('.commands').on('click', '.item:last', function(e){add_command()});
     $('.button.start').on('click', function (e) {
         (execute(1));
+    });
+    $('.button.save').on('click', function (e) {
+        let dataUri = "data:text;charset=utf-8," + "super";
+        window.open(dataUri);
     })
 });
