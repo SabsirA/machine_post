@@ -112,7 +112,6 @@ $(function () {
         (execute(1));
     });
     $('.button.save').on('click', function (e) {
-        let dataUri = "data:text;charset=utf-8," + "super";
-        window.open(dataUri);
+        saveAs( $('.command').html(),'save.txt')
     })
 });
