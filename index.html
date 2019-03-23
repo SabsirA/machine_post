@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Машина поста</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/cookie.js"></script>
     <script src="js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css" >
 </head>
@@ -14,8 +13,14 @@
     <div class="button stop">Стоп</div>
     <div class="button left">Влево</div>
     <div class="button right">Вправо</div>
-    <div class="button save">Сохранить</div>
-    <div class="button load">Загрузить</div>
+    <select class="button speed">
+        <option value="100">Очень быстро</option>
+        <option value="250">Быстро</option>
+        <option value="500">Нормально</option>
+        <option value="750">Медленно</option>
+        <option value="1000">Очень медленно</option>
+        <option value="0">Моментально</option>
+    </select>
 </div>
 <div class="tape">
 

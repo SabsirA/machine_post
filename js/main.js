@@ -86,7 +86,7 @@ function execute(n) {
             'message':`Ошибка в команде ${n}. Отсутствует ссылка на следущую команду`
         }
     }
-    setTimeout(execute, 500,num);
+    setTimeout(execute, $('.speed').val(),num);
 }
 
 $(function () {
