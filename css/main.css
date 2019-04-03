@@ -11,6 +11,8 @@
   box-shadow: 1px 1px 1px black;
   background-color: rgb(198, 207, 255);
   cursor: pointer;
+     text-decoration: none;
+  color:black;
 }
 .button:hover{
   box-shadow: inset -1px -1px 10px white;
